@@ -1385,38 +1385,45 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    /* -----------------------------------------------------------
-       2. WEDDING SONG BGM (Approach 1: wedding-song.mp3)
-       Starts automatically on the user's very first interaction
-       (touch, click, scroll, keypress) and loops continuously.
-       ----------------------------------------------------------- */
-    const bgmAudio = document.getElementById('weddingBgm');
-    let isBgmPlaying = false;
+    /* 3. Comprehensive Scroll & Touch Audio Trigger (wedding-song.mp3) */
+    const bgm = document.getElementById('weddingBgm');
+    let isAudioPlaying = false;
 
-    function playWeddingSong() {
-      if (isBgmPlaying || !bgmAudio) return;
+    // Events that register user activation and scroll intent
+    const activationEvents = [
+      'scroll', 'wheel', 'touchmove', 'touchstart', 'touchend',
+      'pointerdown', 'pointerup', 'pointermove', 'mousedown', 'keydown'
+    ];
 
-      bgmAudio.play().then(() => {
-        isBgmPlaying = true;
-        // Clean up listeners once audio successfully starts playing
-        ['click', 'touchstart', 'scroll', 'keydown', 'pointerdown'].forEach(evt => {
-          window.removeEventListener(evt, playWeddingSong);
-          document.removeEventListener(evt, playWeddingSong);
-        });
-      }).catch(err => {
-        // Autoplay policy waiting for direct gesture
-        console.log('Awaiting direct user interaction for audio playback:', err);
-      });
+    function attemptPlayAudio() {
+      if (isAudioPlaying || !bgm) return;
+
+      const playPromise = bgm.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            isAudioPlaying = true;
+            // Clean up listeners once audio successfully starts playing
+            activationEvents.forEach(evt => {
+              window.removeEventListener(evt, attemptPlayAudio);
+              document.removeEventListener(evt, attemptPlayAudio);
+            });
+          })
+          .catch(() => {
+            // Browser blocked autoplay without user gesture; listener stays alive for next swipe/scroll
+          });
+      }
     }
 
-    // Attach listeners across all gestures for seamless mobile & desktop playback
-    ['click', 'touchstart', 'scroll', 'keydown', 'pointerdown'].forEach(evt => {
-      window.addEventListener(evt, playWeddingSong, { once: true, passive: true });
-      document.addEventListener(evt, playWeddingSong, { once: true, passive: true });
+    // Bind listeners to both window and document with passive mode for jank-free scrolling
+    activationEvents.forEach(evt => {
+      window.addEventListener(evt, attemptPlayAudio, { passive: true });
+      document.addEventListener(evt, attemptPlayAudio, { passive: true });
     });
 
-    // Attempt instant play if allowed
-    window.addEventListener('load', playWeddingSong);
+    // Also attempt on load
+    window.addEventListener('load', attemptPlayAudio, { once: true });
+
 
     /* -----------------------------------------------------------
        3. PERPETUAL FALLING ROSE PETALS ANIMATION (पुष्प वर्षा)
