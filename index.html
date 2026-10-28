@@ -71,15 +71,23 @@
   <style>
     /* Crystal-Clear Legibility Base */
     html {
-      font-size: 18px; /* High contrast minimum readability baseline */
+      font-size: 16px;
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
     body {
       background-color: #FAF6F0;
       color: #1B1B1E;
-      line-height: 1.8;
+      line-height: 1.6;
       overflow-x: hidden;
+      width: 100%;
+      position: relative;
       font-feature-settings: "kern", "liga";
+      word-wrap: break-word;
     }
 
     /* Royal Motif Borders */
@@ -189,36 +197,36 @@
     }
   </style>
 </head>
-<body class="selection:bg-regalGold selection:text-crimson-dark pt-28 sm:pt-32 relative">
+<body class="selection:bg-regalGold selection:text-crimson-dark pt-24 sm:pt-28 md:pt-32 relative w-full overflow-x-hidden">
 
   <!-- ================= FALLING ROSE PETALS CANVAS (पुष्प वर्षा) ================= -->
   <canvas id="petalsCanvas"></canvas>
 
   <!-- ================= FIXED TOP HEADER WRAPPER (ALWAYS VISIBLE ON MOBILE & DESKTOP) ================= -->
-  <div class="fixed top-0 left-0 right-0 z-50 shadow-md">
+  <div class="fixed top-0 left-0 right-0 z-50 shadow-md w-full">
     <!-- Auspicious Sanskrit Bar -->
-    <aside aria-label="Auspicious Invocation" class="bg-crimson-deep text-regalGold-light py-1.5 px-3 text-center font-serifHindi font-bold text-xs sm:text-sm border-b border-regalGold/60 tracking-wider flex items-center justify-center gap-2 sm:gap-3">
+    <aside aria-label="Auspicious Invocation" class="bg-crimson-deep text-regalGold-light py-1 px-2 text-center font-serifHindi font-bold text-[10px] sm:text-xs md:text-sm border-b border-regalGold/60 tracking-wider flex items-center justify-center gap-1.5 sm:gap-3 truncate">
       <span>॥ जय माता दी ॥</span>
-      <span class="text-regalGold text-xs">𑁍</span>
+      <span class="text-regalGold text-[10px]">𑁍</span>
       <span>॥ श्री गणेशाय नमः ॥</span>
-      <span class="text-regalGold text-xs">𑁍</span>
+      <span class="text-regalGold text-[10px]">𑁍</span>
       <span>॥ जय माता दी ॥</span>
     </aside>
 
     <!-- Main Navigation Bar -->
-    <header class="bg-ivory-50/98 backdrop-blur-md border-b-2 border-regalGold-border px-3 sm:px-8 py-2.5 sm:py-3.5">
+    <header class="bg-ivory-50/98 backdrop-blur-md border-b-2 border-regalGold-border px-3 sm:px-6 py-2 sm:py-3">
       <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
         
         <!-- Brand / Couple Names -->
-        <a href="#hero" class="flex items-center gap-2 sm:gap-3.5 group shrink-0">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-crimson text-regalGold-light border-2 border-regalGold flex items-center justify-center text-lg sm:text-xl font-bold shadow-md group-hover:rotate-6 transition duration-300">
+        <a href="#hero" class="flex items-center gap-2 group shrink min-w-0">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-crimson text-regalGold-light border border-regalGold flex items-center justify-center text-sm sm:text-base font-bold shadow shrink-0">
             ॐ
           </div>
-          <div>
-            <span class="block font-cinzel font-black text-crimson text-lg sm:text-2xl tracking-wide group-hover:text-crimson-light transition leading-tight">
+          <div class="min-w-0 truncate">
+            <span class="block font-cinzel font-black text-crimson text-base sm:text-xl tracking-tight leading-tight truncate">
               Rohit <span class="text-regalGold">&</span> Chhaya
             </span>
-            <span class="block text-[11px] sm:text-xs font-black text-regalGold-dark font-serifHindi leading-tight">
+            <span class="block text-[10px] sm:text-xs font-bold text-regalGold-dark font-serifHindi leading-tight truncate">
               २५ नवम्बर २०२६ • मुंबई
             </span>
           </div>
@@ -234,22 +242,22 @@
         </nav>
 
         <!-- Right Controls: Always-Active Indicator + RSVP + Mobile Hamburger Button -->
-        <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-2 shrink-0">
           
-          <!-- Continuous Festive Melodies & Petal Indicator (Non-clickable status badge) -->
-          <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-crimson/10 border border-regalGold text-crimson text-xs font-bold font-serifHindi">
+          <!-- Continuous Festive Melodies & Petal Indicator -->
+          <div class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-crimson/10 border border-regalGold text-crimson text-xs font-bold font-serifHindi">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-            <span>मंगल ध्वनि व पुष्प वर्षा अविरल</span>
+            <span>मंगल ध्वनि व पुष्प वर्षा</span>
           </div>
 
           <!-- Desktop RSVP CTA -->
-          <a href="#rsvp" class="hidden md:inline-flex px-4 py-2 sm:px-5 sm:py-2 rounded-full bg-regalGold hover:bg-regalGold-deep text-charcoal font-black text-sm border-2 border-regalGold-dark shadow transition items-center gap-1.5">
-            <i class="fa-solid fa-heart text-crimson"></i>
+          <a href="#rsvp" class="hidden sm:inline-flex px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-regalGold hover:bg-regalGold-deep text-charcoal font-black text-xs sm:text-sm border border-regalGold-dark shadow transition items-center gap-1.5">
+            <i class="fa-solid fa-heart text-crimson text-xs"></i>
             <span>RSVP</span>
           </a>
 
           <!-- Mobile Hamburger Toggle Button -->
-          <button id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Open Navigation Menu" class="lg:hidden w-10 h-10 rounded-xl bg-ivory-200 border-2 border-regalGold text-crimson flex items-center justify-center text-xl shadow hover:bg-ivory-300 transition">
+          <button id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Open Navigation Menu" class="lg:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-ivory-200 border border-regalGold text-crimson flex items-center justify-center text-lg shadow hover:bg-ivory-300 transition shrink-0">
             <i id="menuIcon" class="fa-solid fa-bars"></i>
           </button>
 
@@ -326,20 +334,20 @@
 
   <main>
     <!-- ================= HERO SECTION ================= -->
-    <section id="hero" class="hero-pattern text-white pt-12 pb-20 sm:pt-16 sm:pb-28 px-4 relative border-b-4 border-regalGold overflow-hidden">
+    <section id="hero" class="hero-pattern text-white pt-8 pb-16 sm:pt-14 sm:pb-24 px-3 sm:px-6 relative border-b-4 border-regalGold overflow-hidden w-full">
       
       <!-- Subtle Decorative Background Circles -->
-      <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-regalGold/10 blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-regalGold/15 blur-3xl pointer-events-none"></div>
+      <div class="absolute -top-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-regalGold/10 blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-regalGold/15 blur-3xl pointer-events-none"></div>
 
-      <div class="max-w-5xl mx-auto text-center relative z-10">
+      <div class="max-w-5xl mx-auto text-center relative z-10 w-full">
 
         <!-- Handcrafted Detailed Cute Bal Ganesh Bhagwan SVG Medallion -->
-        <div class="inline-flex flex-col items-center justify-center p-4 sm:p-6 rounded-3xl bg-crimson-deep/95 border-2 border-regalGold shadow-2xl mb-8 transform hover:scale-105 transition duration-300 floating-anim relative group">
+        <div class="inline-flex flex-col items-center justify-center p-3 sm:p-5 rounded-3xl bg-crimson-deep/95 border-2 border-regalGold shadow-2xl mb-6 max-w-full floating-anim relative group">
           <div class="absolute inset-0 rounded-3xl bg-regalGold/15 blur-xl -z-10 group-hover:bg-regalGold/25 transition"></div>
 
           <!-- Adorable Cute Bal Ganesha (Cute Baby Ganesha) Vector Illustration -->
-          <svg class="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 drop-shadow-[0_8px_16px_rgba(0,0,0,0.6)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="w-24 h-24 xs:w-28 xs:h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 max-w-full h-auto drop-shadow-[0_8px_16px_rgba(0,0,0,0.6)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <!-- Divine Aura Glow -->
               <radialGradient id="cuteHaloGlow" cx="50%" cy="50%" r="50%">
@@ -529,86 +537,88 @@
             <circle cx="100" cy="116" r="2.8" fill="#DC2626" stroke="url(#cuteGold)" stroke-width="0.8" />
           </svg>
 
-          <span class="mt-2.5 text-xs sm:text-sm font-black uppercase tracking-widest text-regalGold-light font-cinzel">॥ श्री गणेशाय नमः ॥</span>
+          <span class="mt-2 text-xs sm:text-sm font-black uppercase tracking-widest text-regalGold-light font-cinzel">॥ श्री गणेशाय नमः ॥</span>
         </div>
 
         <!-- Big, Crystal-Clear Sanskrit Invocation -->
-        <div class="reveal-on-scroll max-w-3xl mx-auto bg-crimson-deep/85 border-2 border-regalGold/60 rounded-3xl p-6 sm:p-8 backdrop-blur-md shadow-2xl mb-8">
-          <p class="font-serifHindi text-regalGold-light text-xl sm:text-2xl md:text-3xl font-extrabold leading-relaxed">
+        <div class="reveal-on-scroll w-full max-w-3xl mx-auto bg-crimson-deep/85 border-2 border-regalGold/60 rounded-2xl sm:rounded-3xl p-4 sm:p-8 backdrop-blur-md shadow-2xl mb-6">
+          <p class="font-serifHindi text-regalGold-light text-base xs:text-lg sm:text-2xl md:text-3xl font-extrabold leading-relaxed">
             वक्रतुण्ड महाकाय, सूर्यकोटि समप्रभ।<br>
             निर्विघ्नं कुरुमे देव, सर्व कार्येषु सर्वदा॥
           </p>
-          <div class="w-32 h-0.5 bg-regalGold/40 mx-auto my-4"></div>
-          <p class="font-serifHindi text-stone-200 text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed">
+          <div class="w-20 sm:w-32 h-0.5 bg-regalGold/40 mx-auto my-3 sm:my-4"></div>
+          <p class="font-serifHindi text-stone-200 text-sm xs:text-base sm:text-xl md:text-2xl font-semibold leading-relaxed">
             मंगलम् भगवान विष्णु, मंगलम् गरुड़ध्वजः।<br>
             मंगलम् पुण्डरीकाक्षः मंगलाय तनो हरिः॥
           </p>
         </div>
 
-        <p class="text-regalGold font-bold text-base sm:text-xl uppercase tracking-[0.25em] font-cinzel mb-3">
+        <p class="text-regalGold font-bold text-xs sm:text-base md:text-xl uppercase tracking-[0.2em] font-cinzel mb-2">
           ✦ शुभ परिणय सूत्र बंधन ✦
         </p>
 
         <!-- Grand Couple Typography -->
-        <div class="my-6 reveal-on-scroll">
-          <h1 class="font-royalTitle text-5xl sm:text-7xl md:text-8xl text-regalGold-light font-normal drop-shadow-lg tracking-wider leading-tight gold-gradient-text">
+        <div class="my-4 sm:my-6 reveal-on-scroll w-full px-1">
+          <h1 class="font-royalTitle text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-regalGold-light font-normal drop-shadow-lg tracking-normal sm:tracking-wider leading-tight gold-gradient-text break-words">
             चि. रोहित
-            <span class="block sm:inline-block font-serifHindi text-3xl sm:text-5xl text-white font-bold mx-4 my-2 sm:my-0">
+            <span class="block sm:inline-block font-serifHindi text-xl xs:text-2xl sm:text-4xl text-white font-bold my-1 sm:my-0 sm:mx-3">
               संग
             </span>
             आ.यु. छाया
           </h1>
 
-          <div class="mt-4 flex items-center justify-center gap-4 text-regalGold text-lg sm:text-2xl font-cinzel tracking-widest font-bold">
-            <span class="h-0.5 w-12 sm:w-20 bg-regalGold"></span>
+          <div class="mt-3 flex items-center justify-center gap-2 sm:gap-4 text-regalGold text-xs xs:text-sm sm:text-xl md:text-2xl font-cinzel tracking-wider font-bold">
+            <span class="h-0.5 w-6 sm:w-16 bg-regalGold"></span>
             <span>ROHIT &amp; CHHAYA</span>
-            <span class="h-0.5 w-12 sm:w-20 bg-regalGold"></span>
+            <span class="h-0.5 w-6 sm:w-16 bg-regalGold"></span>
           </div>
         </div>
 
         <!-- High-Contrast Date & Primary Venue Banner -->
-        <div class="reveal-on-scroll mt-10 bg-ivory-50 text-charcoal rounded-3xl p-6 sm:p-10 border-4 border-regalGold shadow-2xl max-w-3xl mx-auto transform hover:-translate-y-1.5 transition-all duration-300">
-          <div class="flex items-center justify-center gap-3 text-crimson text-2xl sm:text-4xl font-black font-serifHindi">
-            <i class="fa-solid fa-calendar-check text-regalGold"></i>
+        <div class="reveal-on-scroll mt-6 sm:mt-10 bg-ivory-50 text-charcoal rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 border-2 sm:border-4 border-regalGold shadow-2xl w-full max-w-3xl mx-auto">
+          <div class="flex items-center justify-center gap-2 text-crimson text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black font-serifHindi">
+            <i class="fa-solid fa-calendar-check text-regalGold text-lg sm:text-2xl"></i>
             <span>बुधवार, २५ नवम्बर २०२६</span>
           </div>
-          <p class="text-base sm:text-xl font-bold text-charcoal-muted mt-2 font-serifHindi">
+          <p class="text-xs sm:text-base md:text-xl font-bold text-charcoal-muted mt-2 font-serifHindi">
             विक्रम संवत २०८३ मार्गशीर्ष कृष्ण बदी प्रतिपदा
           </p>
           
-          <div class="my-4 border-t-2 border-regalGold/30"></div>
+          <div class="my-3 sm:my-4 border-t-2 border-regalGold/30"></div>
           
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-charcoal font-bold text-lg sm:text-xl">
-            <div class="flex items-center gap-2 text-crimson font-black">
-              <i class="fa-solid fa-hotel text-regalGold text-2xl"></i>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-charcoal font-bold text-sm sm:text-lg md:text-xl">
+            <div class="flex items-center gap-1.5 text-crimson font-black">
+              <i class="fa-solid fa-hotel text-regalGold text-base sm:text-2xl"></i>
               <span>मुक्ति कमल हॉल</span>
             </div>
             <span class="hidden sm:inline text-regalGold">|</span>
             <span>दहिसर (पश्चिम), मुंबई</span>
           </div>
+
+         
         </div>
 
-        <!-- Big, Legible Live Countdown Box -->
-        <div class="reveal-on-scroll mt-12 max-w-3xl mx-auto">
-          <p id="countdownStatus" class="text-regalGold-light font-bold text-base sm:text-xl tracking-wider mb-4 font-serifHindi">
+        <!-- Responsive Countdown Box (2x2 on mobile, 1x4 on desktop) -->
+        <div class="reveal-on-scroll mt-8 sm:mt-12 w-full max-w-3xl mx-auto">
+          <p id="countdownStatus" class="text-regalGold-light font-bold text-xs sm:text-base md:text-xl tracking-wider mb-3 font-serifHindi">
             ⏳ शुभ विवाह का पावन क्षण निकट है:
           </p>
-          <div class="grid grid-cols-4 gap-3 sm:gap-6">
-            <div class="bg-crimson-deep/95 border-2 border-regalGold rounded-3xl p-4 sm:p-6 text-center shadow-2xl countdown-glow transform hover:scale-105 transition-transform duration-300">
-              <span id="cd-days" class="block font-black text-3xl sm:text-5xl md:text-6xl text-regalGold-light">00</span>
-              <span class="text-xs sm:text-sm text-stone-300 font-bold uppercase tracking-wider block mt-1">दिन (Days)</span>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 md:gap-6">
+            <div class="bg-crimson-deep/95 border border-regalGold rounded-2xl sm:rounded-3xl p-3 sm:p-5 text-center shadow-xl countdown-glow">
+              <span id="cd-days" class="block font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl text-regalGold-light">00</span>
+              <span class="text-[10px] sm:text-xs md:text-sm text-stone-300 font-bold uppercase tracking-wider block mt-1">दिन (Days)</span>
             </div>
-            <div class="bg-crimson-deep/95 border-2 border-regalGold rounded-3xl p-4 sm:p-6 text-center shadow-2xl countdown-glow transform hover:scale-105 transition-transform duration-300">
-              <span id="cd-hours" class="block font-black text-3xl sm:text-5xl md:text-6xl text-regalGold-light">00</span>
-              <span class="text-xs sm:text-sm text-stone-300 font-bold uppercase tracking-wider block mt-1">घंटे (Hours)</span>
+            <div class="bg-crimson-deep/95 border border-regalGold rounded-2xl sm:rounded-3xl p-3 sm:p-5 text-center shadow-xl countdown-glow">
+              <span id="cd-hours" class="block font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl text-regalGold-light">00</span>
+              <span class="text-[10px] sm:text-xs md:text-sm text-stone-300 font-bold uppercase tracking-wider block mt-1">घंटे (Hours)</span>
             </div>
-            <div class="bg-crimson-deep/95 border-2 border-regalGold rounded-3xl p-4 sm:p-6 text-center shadow-2xl countdown-glow transform hover:scale-105 transition-transform duration-300">
-              <span id="cd-minutes" class="block font-black text-3xl sm:text-5xl md:text-6xl text-regalGold-light">00</span>
-              <span class="text-xs sm:text-sm text-stone-300 font-bold uppercase tracking-wider block mt-1">मिनट (Mins)</span>
+            <div class="bg-crimson-deep/95 border border-regalGold rounded-2xl sm:rounded-3xl p-3 sm:p-5 text-center shadow-xl countdown-glow">
+              <span id="cd-minutes" class="block font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl text-regalGold-light">00</span>
+              <span class="text-[10px] sm:text-xs md:text-sm text-stone-300 font-bold uppercase tracking-wider block mt-1">मिनट (Mins)</span>
             </div>
-            <div class="bg-crimson-deep/95 border-2 border-regalGold rounded-3xl p-4 sm:p-6 text-center shadow-2xl countdown-glow transform hover:scale-105 transition-transform duration-300">
-              <span id="cd-seconds" class="block font-black text-3xl sm:text-5xl md:text-6xl text-regalGold-light">00</span>
-              <span class="text-xs sm:text-sm text-stone-300 font-bold uppercase tracking-wider block mt-1">सेकंड (Secs)</span>
+            <div class="bg-crimson-deep/95 border border-regalGold rounded-2xl sm:rounded-3xl p-3 sm:p-5 text-center shadow-xl countdown-glow">
+              <span id="cd-seconds" class="block font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl text-regalGold-light">00</span>
+              <span class="text-[10px] sm:text-xs md:text-sm text-stone-300 font-bold uppercase tracking-wider block mt-1">सेकंड (Secs)</span>
             </div>
           </div>
         </div>
@@ -617,74 +627,74 @@
     </section>
 
     <!-- ================= WELCOMING INVITATION PASSAGE ================= -->
-    <section class="py-16 sm:py-20 px-4 bg-ivory-100 border-b-2 border-regalGold-border relative">
-      <div class="reveal-on-scroll max-w-4xl mx-auto bg-ivory-50 rounded-3xl p-8 sm:p-14 ornate-border shadow-royal text-center">
-        <span class="text-xs uppercase font-black tracking-widest text-regalGold-deep font-cinzel">Auspicious Wedding Invitation</span>
-        <h2 class="text-3xl sm:text-5xl font-royalTitle text-crimson mt-2 mb-6">मान्यवर महोदय श्री,</h2>
+    <section class="py-10 sm:py-16 md:py-20 px-3 sm:px-6 bg-ivory-100 border-b-2 border-regalGold-border relative w-full">
+      <div class="reveal-on-scroll max-w-4xl mx-auto bg-ivory-50 rounded-2xl sm:rounded-3xl p-5 sm:p-10 md:p-14 ornate-border shadow-royal text-center">
+        <span class="text-[10px] sm:text-xs uppercase font-black tracking-widest text-regalGold-deep font-cinzel">Auspicious Wedding Invitation</span>
+        <h2 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-royalTitle text-crimson mt-2 mb-4">मान्यवर महोदय श्री,</h2>
         
-        <div class="w-24 h-1 bg-regalGold mx-auto mb-8 rounded-full"></div>
+        <div class="w-16 sm:w-24 h-0.5 sm:h-1 bg-regalGold mx-auto mb-4 sm:mb-8 rounded-full"></div>
 
-        <p class="font-serifHindi text-xl sm:text-2xl text-charcoal font-semibold leading-relaxed">
+        <p class="font-serifHindi text-sm xs:text-base sm:text-xl md:text-2xl text-charcoal font-semibold leading-relaxed">
           "मन उपवन के कण कण में मुखरित मंगलगान, आशीर्वादों की पुष्प वर्षा करते स्नेही स्वजन नूपुर से झंकृत प्रणय-भाव झूमते गाते स्नेह रंग बरसाते परिजन ऐसी मनोहारी बेला में परमेश्वर की असीम कृपा से इस मांगलिक बेला पर पधारकर अपने स्नेहाशीष की मधुर ज्योत्सना से नवयुगल का जीवन पथ आलोकित करने की कृपा करें।"
         </p>
 
-        <div class="mt-8 pt-6 border-t border-regalGold/30 flex items-center justify-center gap-3 text-crimson font-bold text-lg font-serifHindi">
-          <i class="fa-solid fa-hands-praying text-regalGold text-2xl"></i>
+        <div class="mt-6 pt-4 border-t border-regalGold/30 flex items-center justify-center gap-2 text-crimson font-bold text-sm sm:text-lg font-serifHindi">
+          <i class="fa-solid fa-hands-praying text-regalGold text-base sm:text-xl"></i>
           <span>सपरिवार पधारकर हमारा मान बढ़ाएं</span>
         </div>
       </div>
     </section>
 
     <!-- ================= THE COUPLE & FAMILY LINEAGE ================= -->
-    <section id="couple" class="py-18 sm:py-28 px-4 max-w-7xl mx-auto">
+    <section id="couple" class="py-12 sm:py-20 md:py-28 px-3 sm:px-6 max-w-7xl mx-auto w-full">
       
-      <div class="text-center mb-16">
-        <span class="text-xs font-black text-regalGold-deep uppercase tracking-widest font-cinzel">Divine Union &amp; Heritage</span>
-        <h2 class="text-4xl sm:text-6xl font-royalTitle text-crimson mt-1">वर-वधू एवं परिवार परिचय</h2>
-        <div class="w-36 h-1.5 bg-regalGold mx-auto mt-4 rounded-full"></div>
+      <div class="text-center mb-10 sm:mb-16">
+        <span class="text-[10px] sm:text-xs font-black text-regalGold-deep uppercase tracking-widest font-cinzel">Divine Union &amp; Heritage</span>
+        <h2 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-royalTitle text-crimson mt-1">वर-वधू एवं परिवार परिचय</h2>
+        <div class="w-24 sm:w-36 h-1 bg-regalGold mx-auto mt-3 rounded-full"></div>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 items-stretch">
+      <div class="grid lg:grid-cols-2 gap-6 sm:gap-10 items-stretch">
         
         <!-- GROOM CARD (वर पक्ष) -->
-        <article class="reveal-on-scroll bg-ivory-50 rounded-3xl p-8 sm:p-12 border-4 border-crimson shadow-royal flex flex-col justify-between relative overflow-hidden group hover:border-regalGold hover:-translate-y-2 transition-all duration-500">
-          <div class="absolute top-0 right-0 bg-crimson text-regalGold-light font-cinzel text-xs font-bold px-6 py-2 rounded-bl-2xl uppercase tracking-widest">
+        <article class="reveal-on-scroll bg-ivory-50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 border-2 sm:border-4 border-crimson shadow-royal flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute top-0 right-0 bg-crimson text-regalGold-light font-cinzel text-[10px] sm:text-xs font-bold px-3 sm:px-6 py-1 sm:py-1.5 rounded-bl-xl uppercase tracking-widest">
             Groom's Side (वर पक्ष)
           </div>
 
           <div>
-            <div class="flex items-center gap-5 border-b-2 border-stone-200 pb-6 mb-8 mt-2">
-              <div class="w-20 h-20 rounded-2xl bg-crimson text-regalGold-light flex items-center justify-center text-3xl sm:text-4xl shadow-md border-2 border-regalGold">
+            <div class="flex items-center gap-3 sm:gap-5 border-b-2 border-stone-200 pb-4 sm:pb-6 mb-6 mt-3">
+              <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-crimson text-regalGold-light flex items-center justify-center text-2xl sm:text-4xl shadow border border-regalGold shrink-0">
                 <i class="fa-solid fa-crown"></i>
               </div>
-              <div>
-                <span class="text-xs font-black uppercase text-regalGold-deep tracking-wider font-cinzel">The Groom</span>
-                <h3 class="text-4xl sm:text-5xl font-royalTitle text-crimson">चि. रोहित</h3>
-                <span class="text-sm font-bold text-charcoal-muted font-cinzel">ROHIT SHARMA</span>
+              <div class="min-w-0">
+                <span class="text-[10px] sm:text-xs font-black uppercase text-regalGold-deep tracking-wider font-cinzel">The Groom</span>
+                <h3 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-royalTitle text-crimson truncate">चि. रोहित</h3>
+                <span class="text-xs sm:text-sm font-bold text-charcoal-muted font-cinzel">ROHIT SHARMA</span>
               </div>
             </div>
 
-            <div class="space-y-6">
+            <div class="space-y-4 sm:space-y-6">
               <!-- Parents -->
-              <div class="bg-ivory-200/80 p-6 rounded-2xl border-2 border-regalGold/30">
-                <span class="text-xs font-black uppercase tracking-widest text-crimson block mb-1">सुपुत्र (Son of)</span>
-                <p class="font-serifHindi text-2xl font-black text-charcoal leading-snug">
+              <div class="bg-ivory-200/80 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-regalGold/30">
+                <span class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-crimson block mb-1">सुपुत्र (Son of)</span>
+                <p class="font-serifHindi text-lg sm:text-2xl font-black text-charcoal leading-snug">
                   श्रीमती सुनीता शर्मा एवं श्री जगदीश शर्मा
                 </p>
               </div>
 
               <!-- Grandparents -->
-              <div class="bg-ivory-200/80 p-6 rounded-2xl border-2 border-regalGold/30">
-                <span class="text-xs font-black uppercase tracking-widest text-crimson block mb-1">सुपौत्र (Grandson of)</span>
-                <p class="font-serifHindi text-xl font-bold text-charcoal leading-snug">
+              <div class="bg-ivory-200/80 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-regalGold/30">
+                <span class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-crimson block mb-1">सुपौत्र (Grandson of)</span>
+                <p class="font-serifHindi text-base sm:text-xl font-bold text-charcoal leading-snug">
                   स्व. श्रीमती करुना देवी शर्मा एवं स्व. श्री राधेश्याम शर्मा
                 </p>
               </div>
 
               <!-- Ancestral Village -->
-              <div class="bg-white p-6 rounded-2xl border-2 border-stone-300">
-                <span class="text-xs font-black uppercase tracking-widest text-charcoal-muted block mb-1">गाँव का पैतृक पता (Ancestral Roots)</span>
-                <p class="font-serifHindi text-lg sm:text-xl font-bold text-charcoal">
+              <div class="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-stone-300">
+                <span class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-charcoal-muted block mb-1">गाँव का पैतृक पता (Ancestral Roots)</span>
+                <p class="font-serifHindi text-sm sm:text-lg font-bold text-charcoal leading-relaxed">
                   ग्राम: मुनीपुर, पो. कोईरीपुर,<br>
                   जि. सुल्तानपुर (उ.प्र.) — पिन: 222 301
                 </p>
@@ -692,53 +702,53 @@
             </div>
           </div>
 
-          <div class="mt-8 pt-6 border-t-2 border-stone-200">
-            <p class="text-base font-bold text-crimson font-serifHindi">
-              <i class="fa-solid fa-location-dot text-regalGold text-lg mr-2"></i>
+          <div class="mt-6 pt-4 border-t-2 border-stone-200">
+            <p class="text-xs sm:text-base font-bold text-crimson font-serifHindi">
+              <i class="fa-solid fa-location-dot text-regalGold text-sm sm:text-lg mr-1.5"></i>
               वर्तमान निवास: फ्लैट नं. C-603, रश्मि प्राईड, मीरा रोड (पूर्व)
             </p>
           </div>
         </article>
 
         <!-- BRIDE CARD (वधू पक्ष) -->
-        <article class="reveal-on-scroll bg-ivory-50 rounded-3xl p-8 sm:p-12 border-4 border-regalGold shadow-royal flex flex-col justify-between relative overflow-hidden group hover:border-crimson hover:-translate-y-2 transition-all duration-500">
-          <div class="absolute top-0 right-0 bg-regalGold text-charcoal font-cinzel text-xs font-bold px-6 py-2 rounded-bl-2xl uppercase tracking-widest">
+        <article class="reveal-on-scroll bg-ivory-50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 border-2 sm:border-4 border-regalGold shadow-royal flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute top-0 right-0 bg-regalGold text-charcoal font-cinzel text-[10px] sm:text-xs font-bold px-3 sm:px-6 py-1 sm:py-1.5 rounded-bl-xl uppercase tracking-widest">
             Bride's Side (वधू पक्ष)
           </div>
 
           <div>
-            <div class="flex items-center gap-5 border-b-2 border-stone-200 pb-6 mb-8 mt-2">
-              <div class="w-20 h-20 rounded-2xl bg-regalGold text-crimson-deep flex items-center justify-center text-3xl sm:text-4xl shadow-md border-2 border-crimson">
+            <div class="flex items-center gap-3 sm:gap-5 border-b-2 border-stone-200 pb-4 sm:pb-6 mb-6 mt-3">
+              <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-regalGold text-crimson-deep flex items-center justify-center text-2xl sm:text-4xl shadow border border-crimson shrink-0">
                 <i class="fa-solid fa-gem"></i>
               </div>
-              <div>
-                <span class="text-xs font-black uppercase text-regalGold-deep tracking-wider font-cinzel">The Bride</span>
-                <h3 class="text-4xl sm:text-5xl font-royalTitle text-crimson">आ.यु. छाया</h3>
-                <span class="text-sm font-bold text-charcoal-muted font-cinzel">CHHAYA SHARMA</span>
+              <div class="min-w-0">
+                <span class="text-[10px] sm:text-xs font-black uppercase text-regalGold-deep tracking-wider font-cinzel">The Bride</span>
+                <h3 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-royalTitle text-crimson truncate">आ.यु. छाया</h3>
+                <span class="text-xs sm:text-sm font-bold text-charcoal-muted font-cinzel">CHHAYA SHARMA</span>
               </div>
             </div>
 
-            <div class="space-y-6">
+            <div class="space-y-4 sm:space-y-6">
               <!-- Parents -->
-              <div class="bg-ivory-200/80 p-6 rounded-2xl border-2 border-regalGold/30">
-                <span class="text-xs font-black uppercase tracking-widest text-regalGold-dark block mb-1">सुपुत्री (Daughter of)</span>
-                <p class="font-serifHindi text-2xl font-black text-charcoal leading-snug">
+              <div class="bg-ivory-200/80 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-regalGold/30">
+                <span class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-regalGold-dark block mb-1">सुपुत्री (Daughter of)</span>
+                <p class="font-serifHindi text-lg sm:text-2xl font-black text-charcoal leading-snug">
                   श्रीमती गीता शर्मा एवं श्री रमेशचंद्र शर्मा
                 </p>
               </div>
 
               <!-- Grandparents -->
-              <div class="bg-ivory-200/80 p-6 rounded-2xl border-2 border-regalGold/30">
-                <span class="text-xs font-black uppercase tracking-widest text-regalGold-dark block mb-1">सुपौत्री (Granddaughter of)</span>
-                <p class="font-serifHindi text-xl font-bold text-charcoal leading-snug">
+              <div class="bg-ivory-200/80 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-regalGold/30">
+                <span class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-regalGold-dark block mb-1">सुपौत्री (Granddaughter of)</span>
+                <p class="font-serifHindi text-base sm:text-xl font-bold text-charcoal leading-snug">
                   स्व. श्रीमती बबना शर्मा एवं स्व. श्री रामस्वरुप शर्मा
                 </p>
               </div>
 
               <!-- Native Village -->
-              <div class="bg-white p-6 rounded-2xl border-2 border-stone-300">
-                <span class="text-xs font-black uppercase tracking-widest text-charcoal-muted block mb-1">गाँव का पैतृक पता (Ancestral Roots)</span>
-                <p class="font-serifHindi text-lg sm:text-xl font-bold text-charcoal">
+              <div class="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-stone-300">
+                <span class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-charcoal-muted block mb-1">गाँव का पैतृक पता (Ancestral Roots)</span>
+                <p class="font-serifHindi text-sm sm:text-lg font-bold text-charcoal leading-relaxed">
                   गाँव: कुदुनपुर, पट्टी ग्रामीण, पट्टी खास,<br>
                   प्रतापगढ़ (उ.प्र.)
                 </p>
@@ -746,9 +756,9 @@
             </div>
           </div>
 
-          <div class="mt-8 pt-6 border-t-2 border-stone-200">
-            <p class="text-base font-bold text-regalGold-dark font-serifHindi">
-              <i class="fa-solid fa-heart text-crimson text-lg mr-2"></i>
+          <div class="mt-6 pt-4 border-t-2 border-stone-200">
+            <p class="text-xs sm:text-base font-bold text-regalGold-dark font-serifHindi">
+              <i class="fa-solid fa-heart text-crimson text-sm sm:text-lg mr-1.5"></i>
               समस्त शर्मा परिवार की सुसंस्कृत सुकन्या
             </p>
           </div>
@@ -757,17 +767,17 @@
       </div>
 
       <!-- Traditional Couple Hindi Poetic Blessings -->
-      <div class="mt-12 grid md:grid-cols-2 gap-6 sm:gap-8">
-        <div class="reveal-on-scroll bg-crimson text-white p-8 sm:p-10 rounded-3xl border-2 border-regalGold shadow-xl text-center transform hover:scale-[1.02] transition-transform duration-300">
-          <p class="font-serifHindi text-xl sm:text-2xl font-bold text-regalGold-light leading-relaxed">
+      <div class="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
+        <div class="reveal-on-scroll bg-crimson text-white p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-regalGold shadow-xl text-center">
+          <p class="font-serifHindi text-base xs:text-lg sm:text-2xl font-bold text-regalGold-light leading-relaxed">
             "दो फूल खिले दो हृदय मिले,<br>
             दो कलियों ने किया श्रृंगार,<br>
             दो दूर परिवार के पथिको ने,<br>
             संग संग चलना स्वीकार किया।"
           </p>
         </div>
-        <div class="reveal-on-scroll bg-crimson text-white p-8 sm:p-10 rounded-3xl border-2 border-regalGold shadow-xl text-center transform hover:scale-[1.02] transition-transform duration-300">
-          <p class="font-serifHindi text-xl sm:text-2xl font-bold text-regalGold-light leading-relaxed">
+        <div class="reveal-on-scroll bg-crimson text-white p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-regalGold shadow-xl text-center">
+          <p class="font-serifHindi text-base xs:text-lg sm:text-2xl font-bold text-regalGold-light leading-relaxed">
             "बांध लो इस बंधन को<br>
             यह रस्म नहीं दस्तूर है,<br>
             कौन मिटा सकता इसको,<br>
@@ -779,167 +789,167 @@
     </section>
 
     <!-- ================= AUSPICIOUS ITINERARY (मांगलिक कार्यक्रम) ================= -->
-    <section id="events" class="py-20 sm:py-28 bg-ivory-200/60 border-y-4 border-regalGold/30">
-      <div class="max-w-5xl mx-auto px-4">
+    <section id="events" class="py-12 sm:py-20 md:py-28 bg-ivory-200/60 border-y-2 sm:border-y-4 border-regalGold/30 w-full px-3 sm:px-6">
+      <div class="max-w-5xl mx-auto">
         
-        <div class="text-center mb-16 reveal-on-scroll">
-          <span class="text-xs font-black text-crimson uppercase tracking-widest font-cinzel">Auspicious Schedule</span>
-          <h2 class="text-4xl sm:text-6xl font-royalTitle text-crimson mt-1">मांगलिक कार्यक्रम</h2>
-          <p class="text-charcoal font-serifHindi text-xl sm:text-2xl font-bold mt-2">
+        <div class="text-center mb-10 sm:mb-16 reveal-on-scroll">
+          <span class="text-[10px] sm:text-xs font-black text-crimson uppercase tracking-widest font-cinzel">Auspicious Schedule</span>
+          <h2 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-royalTitle text-crimson mt-1">मांगलिक कार्यक्रम</h2>
+          <p class="text-charcoal font-serifHindi text-sm xs:text-base sm:text-xl font-bold mt-2">
             विघ्न हरण मंगल करण, श्री गणपति महाराज । प्रथम निमंत्रण आपको, मेरे पूरण करिए काज॥
           </p>
-          <div class="w-32 h-1.5 bg-crimson mx-auto mt-4 rounded-full"></div>
+          <div class="w-24 sm:w-32 h-1 bg-crimson mx-auto mt-3 rounded-full"></div>
         </div>
 
-        <div class="space-y-8">
+        <div class="space-y-4 sm:space-y-8">
 
           <!-- RITUAL 1: MEHENDI -->
-          <div class="reveal-on-scroll bg-ivory-50 rounded-3xl p-7 sm:p-9 border-2 border-stone-300 shadow-royal hover:shadow-royal-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-5 w-full md:w-auto">
-              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-3xl sm:text-4xl border-2 border-emerald-600 shrink-0">
+          <div class="reveal-on-scroll bg-ivory-50 rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-9 border border-stone-300 shadow-royal flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
+            <div class="flex items-center gap-3 sm:gap-5 w-full md:w-auto">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl sm:text-3xl border border-emerald-600 shrink-0">
                 <i class="fa-solid fa-hands-bubbles"></i>
               </div>
-              <div>
-                <span class="text-xs font-extrabold uppercase text-emerald-900 bg-emerald-200 px-3.5 py-1 rounded-full">उत्सव १ • Mehendi</span>
-                <h3 class="text-3xl sm:text-4xl font-royalTitle text-charcoal mt-1">मेंहदी उत्सव</h3>
-                <p class="text-base sm:text-lg font-bold text-charcoal-muted mt-1">
-                  <i class="fa-solid fa-location-dot text-emerald-700 mr-2"></i> निवास स्थान, मीरा रोड (पूर्व)
+              <div class="min-w-0">
+                <span class="text-[10px] sm:text-xs font-extrabold uppercase text-emerald-900 bg-emerald-200 px-2.5 py-0.5 rounded-full inline-block">उत्सव १ • Mehendi</span>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-royalTitle text-charcoal mt-1">मेंहदी उत्सव</h3>
+                <p class="text-xs sm:text-base font-bold text-charcoal-muted mt-0.5">
+                  <i class="fa-solid fa-location-dot text-emerald-700 mr-1.5"></i> निवास स्थान, मीरा रोड (पूर्व)
                 </p>
               </div>
             </div>
 
-            <div class="w-full md:w-auto text-left md:text-right bg-white p-5 rounded-2xl border-2 border-stone-200">
-              <p class="font-serifHindi text-2xl font-black text-crimson">
+            <div class="w-full md:w-auto text-left md:text-right bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-stone-200">
+              <p class="font-serifHindi text-lg sm:text-2xl font-black text-crimson">
                 सोमवार, २३ नवम्बर २०२६
               </p>
-              <p class="text-charcoal font-bold text-lg">
+              <p class="text-charcoal font-bold text-sm sm:text-lg">
                 समय: <span class="text-crimson font-black">लग्नानुसार</span>
               </p>
             </div>
           </div>
 
           <!-- RITUAL 2: HALDI EVAM BHATTWAN -->
-          <div class="reveal-on-scroll bg-ivory-50 rounded-3xl p-7 sm:p-9 border-2 border-stone-300 shadow-royal hover:shadow-royal-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-5 w-full md:w-auto">
-              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-3xl sm:text-4xl border-2 border-amber-600 shrink-0">
+          <div class="reveal-on-scroll bg-ivory-50 rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-9 border border-stone-300 shadow-royal flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
+            <div class="flex items-center gap-3 sm:gap-5 w-full md:w-auto">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl sm:text-3xl border border-amber-600 shrink-0">
                 <i class="fa-solid fa-sun"></i>
               </div>
-              <div>
-                <span class="text-xs font-extrabold uppercase text-amber-900 bg-amber-200 px-3.5 py-1 rounded-full">उत्सव २ • Haldi</span>
-                <h3 class="text-3xl sm:text-4xl font-royalTitle text-charcoal mt-1">हल्दी एवं भत्तवान</h3>
-                <p class="text-base sm:text-lg font-bold text-charcoal-muted mt-1">
-                  <i class="fa-solid fa-location-dot text-amber-700 mr-2"></i> निवास स्थान, मीरा रोड (पूर्व)
+              <div class="min-w-0">
+                <span class="text-[10px] sm:text-xs font-extrabold uppercase text-amber-900 bg-amber-200 px-2.5 py-0.5 rounded-full inline-block">उत्सव २ • Haldi</span>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-royalTitle text-charcoal mt-1">हल्दी एवं भत्तवान</h3>
+                <p class="text-xs sm:text-base font-bold text-charcoal-muted mt-0.5">
+                  <i class="fa-solid fa-location-dot text-amber-700 mr-1.5"></i> निवास स्थान, मीरा रोड (पूर्व)
                 </p>
               </div>
             </div>
 
-            <div class="w-full md:w-auto text-left md:text-right bg-white p-5 rounded-2xl border-2 border-stone-200">
-              <p class="font-serifHindi text-2xl font-black text-crimson">
+            <div class="w-full md:w-auto text-left md:text-right bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-stone-200">
+              <p class="font-serifHindi text-lg sm:text-2xl font-black text-crimson">
                 मंगलवार, २४ नवम्बर २०२६
               </p>
-              <p class="text-charcoal font-bold text-lg">
+              <p class="text-charcoal font-bold text-sm sm:text-lg">
                 समय: <span class="text-crimson font-black">लग्नानुसार</span>
               </p>
             </div>
           </div>
 
           <!-- RITUAL 3: BARAAT PRASTHAN -->
-          <div class="reveal-on-scroll bg-ivory-50 rounded-3xl p-7 sm:p-9 border-3 border-crimson shadow-royal hover:shadow-royal-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-red-50 to-white">
-            <div class="flex items-center gap-5 w-full md:w-auto">
-              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-crimson text-regalGold-light flex items-center justify-center text-3xl sm:text-4xl border-2 border-regalGold shrink-0">
+          <div class="reveal-on-scroll bg-ivory-50 rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-9 border-2 border-crimson shadow-royal flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 bg-gradient-to-r from-red-50 to-white">
+            <div class="flex items-center gap-3 sm:gap-5 w-full md:w-auto">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-crimson text-regalGold-light flex items-center justify-center text-xl sm:text-3xl border border-regalGold shrink-0">
                 <i class="fa-solid fa-bus-simple"></i>
               </div>
-              <div>
-                <span class="text-xs font-extrabold uppercase text-white bg-crimson px-3.5 py-1 rounded-full">रवानगी • Baraat</span>
-                <h3 class="text-3xl sm:text-4xl font-royalTitle text-crimson mt-1">बारात प्रस्थान (Bus द्वारा)</h3>
-                <p class="text-base sm:text-lg font-bold text-charcoal mt-1">
-                  <i class="fa-solid fa-map-pin text-crimson mr-2"></i> बारात हमारे निवास स्थान मीरा रोड से प्रस्थान करेगी
+              <div class="min-w-0">
+                <span class="text-[10px] sm:text-xs font-extrabold uppercase text-white bg-crimson px-2.5 py-0.5 rounded-full inline-block">रवानगी • Baraat</span>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-royalTitle text-crimson mt-1">बारात प्रस्थान (Bus द्वारा)</h3>
+                <p class="text-xs sm:text-base font-bold text-charcoal mt-0.5">
+                  <i class="fa-solid fa-map-pin text-crimson mr-1.5"></i> बारात हमारे निवास स्थान मीरा रोड से प्रस्थान करेगी
                 </p>
               </div>
             </div>
 
-            <div class="w-full md:w-auto text-left md:text-right bg-white p-5 rounded-2xl border-2 border-crimson">
-              <p class="font-serifHindi text-2xl font-black text-crimson">
+            <div class="w-full md:w-auto text-left md:text-right bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-crimson">
+              <p class="font-serifHindi text-lg sm:text-2xl font-black text-crimson">
                 बुधवार, २५ नवम्बर २०२६
               </p>
-              <p class="text-charcoal font-extrabold text-xl">
-                शाम ठीक <span class="text-crimson font-black text-2xl">५:०० बजे</span>
+              <p class="text-charcoal font-extrabold text-base sm:text-xl">
+                शाम ठीक <span class="text-crimson font-black text-xl sm:text-2xl">५:०० बजे</span>
               </p>
             </div>
           </div>
 
-          <!-- RITUAL 4: SHUBH VIVAH & SWARUCHI BHOJAN (MAIN HIGHLIGHT EVENT) -->
-          <div class="reveal-on-scroll bg-crimson text-white rounded-3xl p-8 sm:p-12 border-4 border-regalGold shadow-2xl relative overflow-hidden group">
-            <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-regalGold/40 pb-6 mb-8">
-              <span class="text-xs sm:text-sm font-black bg-regalGold text-charcoal px-5 py-2 rounded-full uppercase tracking-wider font-cinzel">
-                ★ मुख्य मांगलिक दिवस (Grand Wedding &amp; Banquet)
+          <!-- RITUAL 4: SHUBH VIVAH & SWARUCHI BHOJAN -->
+          <div class="reveal-on-scroll bg-crimson text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 border-2 sm:border-4 border-regalGold shadow-2xl relative overflow-hidden group">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-regalGold/40 pb-4 mb-6">
+              <span class="text-[10px] sm:text-xs font-black bg-regalGold text-charcoal px-3 sm:px-4 py-1 rounded-full uppercase tracking-wider font-cinzel">
+                ★ मुख्य विवाह दिवस (Grand Wedding)
               </span>
-              <span class="text-xl sm:text-2xl font-black text-regalGold-light font-serifHindi">
+              <span class="text-base sm:text-2xl font-black text-regalGold-light font-serifHindi">
                 बुधवार, २५ नवम्बर २०२६
               </span>
             </div>
 
-            <div class="grid lg:grid-cols-12 gap-8 items-center">
+            <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center">
               <div class="lg:col-span-7">
-                <h3 class="text-4xl sm:text-5xl md:text-6xl font-royalTitle text-regalGold-light mb-3">
+                <h3 class="text-3xl sm:text-4xl md:text-5xl font-royalTitle text-regalGold-light mb-2">
                   शुभ विवाह एवं स्वागत समारोह
                 </h3>
-                <p class="text-2xl sm:text-3xl font-serifHindi text-white font-extrabold mb-4">
+                <p class="text-xl sm:text-3xl font-serifHindi text-white font-extrabold mb-3">
                   (सुरुचि भोजन / प्रीतिभोज)
                 </p>
-                <p class="text-lg sm:text-xl text-stone-200 font-serifHindi leading-relaxed">
+                <p class="text-sm sm:text-lg text-stone-200 font-serifHindi leading-relaxed">
                   इस परम पावन घड़ी में आप सपरिवार सादर आमंत्रित हैं। वर-वधू को अपना शुभाशीष देकर अनुगृहीत करें।
                 </p>
               </div>
 
-              <div class="lg:col-span-5 bg-crimson-deep/95 p-6 sm:p-8 rounded-3xl border-2 border-regalGold space-y-5">
-                <div class="flex items-start gap-4">
-                  <div class="w-12 h-12 rounded-xl bg-crimson text-regalGold flex items-center justify-center text-xl shrink-0">
+              <div class="lg:col-span-5 bg-crimson-deep/95 p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border border-regalGold space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-crimson text-regalGold flex items-center justify-center text-lg shrink-0">
                     <i class="fa-solid fa-clock"></i>
                   </div>
                   <div>
-                    <span class="text-xs uppercase text-stone-300 font-bold block">समारोह एवं भोजन समय</span>
-                    <p class="text-2xl sm:text-3xl font-black text-white font-serifHindi">रात्रि ८:०० से ११:०० बजे तक</p>
+                    <span class="text-[10px] sm:text-xs uppercase text-stone-300 font-bold block">समारोह एवं भोजन समय</span>
+                    <p class="text-lg sm:text-2xl font-black text-white font-serifHindi">रात्रि ८:०० से ११:०० बजे तक</p>
                   </div>
                 </div>
 
-                <div class="flex items-start gap-4 pt-4 border-t border-regalGold/30">
-                  <div class="w-12 h-12 rounded-xl bg-crimson text-regalGold flex items-center justify-center text-xl shrink-0">
+                <div class="flex items-start gap-3 pt-3 border-t border-regalGold/30">
+                  <div class="w-10 h-10 rounded-xl bg-crimson text-regalGold flex items-center justify-center text-lg shrink-0">
                     <i class="fa-solid fa-hotel"></i>
                   </div>
                   <div>
-                    <span class="text-xs uppercase text-stone-300 font-bold block">विवाह स्थल</span>
-                    <p class="text-xl sm:text-2xl font-bold text-white font-serifHindi">मुक्ति कमल हॉल, दहिसर (पश्चिम)</p>
+                    <span class="text-[10px] sm:text-xs uppercase text-stone-300 font-bold block">विवाह स्थल</span>
+                    <p class="text-base sm:text-xl font-bold text-white font-serifHindi">मुक्ति कमल हॉल, दहिसर (पश्चिम)</p>
                   </div>
                 </div>
 
-                <a href="#venue" class="mt-4 block w-full py-4 rounded-2xl bg-regalGold hover:bg-regalGold-deep text-charcoal text-center font-black text-lg tracking-wider uppercase transition shadow-lg hover:shadow-gold-glow">
-                  <i class="fa-solid fa-diamond-turn-right mr-2"></i> स्थल तक रास्ता देखें
+                <a href="#venue" class="mt-3 block w-full py-3 rounded-xl bg-regalGold hover:bg-regalGold-deep text-charcoal text-center font-black text-sm sm:text-base tracking-wider uppercase transition shadow">
+                  <i class="fa-solid fa-diamond-turn-right mr-1.5"></i> स्थल तक रास्ता देखें
                 </a>
               </div>
             </div>
           </div>
 
           <!-- RITUAL 5: VIDAI -->
-          <div class="reveal-on-scroll bg-ivory-50 rounded-3xl p-7 sm:p-9 border-2 border-stone-300 shadow-royal hover:shadow-royal-hover hover:-translate-y-1.5 transition-all duration-300 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-5 w-full md:w-auto">
-              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-rose-100 text-rose-800 flex items-center justify-center text-3xl sm:text-4xl border-2 border-rose-600 shrink-0">
+          <div class="reveal-on-scroll bg-ivory-50 rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-9 border border-stone-300 shadow-royal flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
+            <div class="flex items-center gap-3 sm:gap-5 w-full md:w-auto">
+              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-rose-100 text-rose-800 flex items-center justify-center text-xl sm:text-3xl border border-rose-600 shrink-0">
                 <i class="fa-solid fa-heart-circle-check"></i>
               </div>
-              <div>
-                <span class="text-xs font-extrabold uppercase text-rose-900 bg-rose-200 px-3.5 py-1 rounded-full">मंगल विदाई • Vidai</span>
-                <h3 class="text-3xl sm:text-4xl font-royalTitle text-charcoal mt-1">शुभ विदाई</h3>
-                <p class="text-base sm:text-lg font-bold text-charcoal-muted mt-1">
-                  <i class="fa-solid fa-hotel text-rose-700 mr-2"></i> मुक्ति कमल हॉल, दहिसर (पश्चिम)
+              <div class="min-w-0">
+                <span class="text-[10px] sm:text-xs font-extrabold uppercase text-rose-900 bg-rose-200 px-2.5 py-0.5 rounded-full inline-block">मंगल विदाई • Vidai</span>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-royalTitle text-charcoal mt-1">शुभ विदाई</h3>
+                <p class="text-xs sm:text-base font-bold text-charcoal-muted mt-0.5">
+                  <i class="fa-solid fa-hotel text-rose-700 mr-1.5"></i> मुक्ति कमल हॉल, दहिसर (पश्चिम)
                 </p>
               </div>
             </div>
 
-            <div class="w-full md:w-auto text-left md:text-right bg-white p-5 rounded-2xl border-2 border-stone-200">
-              <p class="font-serifHindi text-2xl font-black text-crimson">
+            <div class="w-full md:w-auto text-left md:text-right bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-stone-200">
+              <p class="font-serifHindi text-lg sm:text-2xl font-black text-crimson">
                 गुरुवार, २६ नवम्बर २०२६
               </p>
-              <p class="text-charcoal font-bold text-lg">
+              <p class="text-charcoal font-bold text-sm sm:text-lg">
                 समय: <span class="text-crimson font-black">शुभ बेला में</span>
               </p>
             </div>
@@ -951,44 +961,44 @@
     </section>
 
     <!-- ================= VENUE & DIRECTIONS SECTION ================= -->
-    <section id="venue" class="py-20 sm:py-28 px-4 max-w-7xl mx-auto">
+    <section id="venue" class="py-12 sm:py-20 md:py-28 px-3 sm:px-6 max-w-7xl mx-auto w-full">
       
-      <div class="text-center mb-16 reveal-on-scroll">
-        <span class="text-xs font-black text-regalGold-deep uppercase tracking-widest font-cinzel">Location Guide &amp; Venue</span>
-        <h2 class="text-4xl sm:text-6xl font-royalTitle text-crimson mt-1">विवाह स्थल एवं निवास पता</h2>
-        <div class="w-36 h-1.5 bg-regalGold mx-auto mt-4 rounded-full"></div>
+      <div class="text-center mb-10 sm:mb-16 reveal-on-scroll">
+        <span class="text-[10px] sm:text-xs font-black text-regalGold-deep uppercase tracking-widest font-cinzel">Location Guide &amp; Venue</span>
+        <h2 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-royalTitle text-crimson mt-1">विवाह स्थल एवं निवास पता</h2>
+        <div class="w-24 sm:w-36 h-1 bg-regalGold mx-auto mt-3 rounded-full"></div>
       </div>
 
-      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+      <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
         
         <!-- MAIN VENUE CARD (DAHISAR) -->
-        <article class="reveal-on-scroll lg:col-span-7 bg-ivory-50 rounded-3xl p-8 sm:p-12 border-4 border-crimson shadow-royal flex flex-col justify-between hover:shadow-royal-hover transition-all duration-300">
+        <article class="reveal-on-scroll lg:col-span-7 bg-ivory-50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 border-2 sm:border-4 border-crimson shadow-royal flex flex-col justify-between">
           <div>
-            <div class="inline-block bg-crimson text-regalGold-light text-xs font-black uppercase px-4 py-1.5 rounded-full mb-3 tracking-wider font-cinzel">
+            <div class="inline-block bg-crimson text-regalGold-light text-[10px] sm:text-xs font-black uppercase px-3 py-1 rounded-full mb-3 tracking-wider font-cinzel">
               ★ मुख्य विवाह स्थल (Main Wedding Hall)
             </div>
             
-            <h3 class="text-3xl sm:text-5xl font-royalTitle text-crimson mb-3">
+            <h3 class="text-2xl sm:text-4xl md:text-5xl font-royalTitle text-crimson mb-3">
               मुक्ति कमल हॉल (Mukti Kamal Hall)
             </h3>
 
-            <div class="bg-ivory-200/80 p-6 sm:p-8 rounded-3xl border-2 border-regalGold/40 text-charcoal space-y-3 mb-6">
-              <p class="text-xl sm:text-2xl font-black font-serifHindi leading-snug">
-                <i class="fa-solid fa-location-dot text-crimson text-2xl mr-2"></i>
+            <div class="bg-ivory-200/80 p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-regalGold/40 text-charcoal space-y-2.5 mb-5">
+              <p class="text-base sm:text-xl md:text-2xl font-black font-serifHindi leading-snug">
+                <i class="fa-solid fa-location-dot text-crimson text-lg sm:text-2xl mr-1.5"></i>
                 लीवो पिटर वाडी, तिलक रोड,<br>
                 (जैन मंदिर के पास, स्टेशन के सामने)
               </p>
-              <p class="text-2xl sm:text-3xl font-black text-crimson font-serifHindi">
+              <p class="text-lg sm:text-2xl md:text-3xl font-black text-crimson font-serifHindi">
                 दहिसर (पश्चिम), मुंबई - ४०० ०६८
               </p>
-              <div class="pt-3 border-t border-regalGold/30 flex items-center gap-2 text-charcoal font-bold text-base">
-                <i class="fa-solid fa-train-subway text-regalGold-deep text-lg"></i>
-                <span>दहिसर पश्चिम रेलवे स्टेशन से सिर्फ 2 मिनट की आसान पैदल दूरी।</span>
+              <div class="pt-2.5 border-t border-regalGold/30 flex items-center gap-1.5 text-charcoal font-bold text-xs sm:text-base">
+                <i class="fa-solid fa-train-subway text-regalGold-deep text-sm sm:text-base"></i>
+                <span>दहिसर रेलवे स्टेशन (पश्चिम) से केवल 2 मिनट की आसान पैदल दूरी।</span>
               </div>
             </div>
 
             <!-- Google Maps Embed for Mukti Kamal Hall -->
-            <div class="w-full h-80 rounded-2xl overflow-hidden border-2 border-stone-300 shadow-inner">
+            <div class="w-full h-64 sm:h-80 rounded-xl sm:rounded-2xl overflow-hidden border border-stone-300 shadow-inner">
               <iframe 
                 title="Mukti Kamal Hall Dahisar Location"
                 class="w-full h-full border-0"
@@ -999,71 +1009,71 @@
             </div>
           </div>
 
-          <div class="mt-8 pt-4">
-            <a href="https://maps.google.com/?q=Mukti+Kamal+Hall+Tilak+Road+Dahisar+West+Mumbai" target="_blank" rel="noopener noreferrer" class="w-full py-4 rounded-2xl bg-crimson hover:bg-crimson-light text-white font-black text-xl text-center shadow-xl transition flex items-center justify-center gap-3">
+          <div class="mt-6 pt-2">
+            <a href="https://maps.google.com/?q=Mukti+Kamal+Hall+Tilak+Road+Dahisar+West+Mumbai" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-xl sm:rounded-2xl bg-crimson hover:bg-crimson-light text-white font-black text-base sm:text-xl text-center shadow-xl transition flex items-center justify-center gap-2">
               <i class="fa-solid fa-map-location-dot text-regalGold"></i>
-              <span>Google Maps में दिशा देखें (Navigate)</span>
+              <span>Google Maps में दिशा देखें</span>
             </a>
           </div>
         </article>
 
         <!-- RESIDENCE & CONTACT PHONE DIRECTORY -->
-        <div class="lg:col-span-5 flex flex-col justify-between gap-8">
+        <div class="lg:col-span-5 flex flex-col justify-between gap-6">
           
           <!-- RESIDENCE (MIRA ROAD) -->
-          <article class="reveal-on-scroll bg-ivory-50 rounded-3xl p-8 sm:p-10 border-2 border-stone-300 shadow-royal hover:shadow-royal-hover transition-all duration-300">
-            <div class="flex items-center gap-4 mb-4 text-crimson">
-              <div class="w-14 h-14 rounded-2xl bg-crimson text-regalGold-light flex items-center justify-center text-2xl font-bold shadow">
+          <article class="reveal-on-scroll bg-ivory-50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-stone-300 shadow-royal">
+            <div class="flex items-center gap-3 mb-3 text-crimson">
+              <div class="w-12 h-12 rounded-xl bg-crimson text-regalGold-light flex items-center justify-center text-xl font-bold shadow shrink-0">
                 <i class="fa-solid fa-house-chimney"></i>
               </div>
               <div>
-                <span class="text-xs uppercase font-black text-regalGold-deep tracking-wider font-cinzel">Residence Address</span>
-                <h4 class="text-3xl font-royalTitle">निवास स्थान</h4>
+                <span class="text-[10px] sm:text-xs uppercase font-black text-regalGold-deep tracking-wider font-cinzel">Residence Address</span>
+                <h4 class="text-2xl sm:text-3xl font-royalTitle">निवास स्थान</h4>
               </div>
             </div>
 
-            <p class="font-serifHindi text-xl sm:text-2xl font-bold text-charcoal leading-relaxed">
+            <p class="font-serifHindi text-base sm:text-xl font-bold text-charcoal leading-relaxed">
               फ्लैट नं. C-603, रश्मि प्राईड को.ऑ.हा.सोसायटी,<br>
               कनकिया रोड, प्रशांत हॉटेल के सामने,<br>
               सिनेमेक्स के पास, मीरा रोड (पूर्व) - 401 107
             </p>
 
-            <div class="mt-4 pt-3 border-t border-stone-200">
-              <a href="https://maps.google.com/?q=Rashmi+Pride+Kanakia+Road+Mira+Road+East" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-crimson font-black text-base hover:underline">
+            <div class="mt-3 pt-2 border-t border-stone-200">
+              <a href="https://maps.google.com/?q=Rashmi+Pride+Kanakia+Road+Mira+Road+East" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-crimson font-black text-xs sm:text-sm hover:underline">
                 <i class="fa-solid fa-diamond-turn-right text-regalGold"></i>
                 <span>मीरा रोड निवास का मैप खोलें</span>
               </a>
             </div>
 
             <!-- TAP-TO-CALL BUTTONS -->
-            <div class="mt-6 pt-5 border-t-2 border-stone-200">
-              <span class="text-xs font-black uppercase text-charcoal-muted tracking-widest block mb-3 font-cinzel">
+            <div class="mt-5 pt-4 border-t-2 border-stone-200">
+              <span class="text-[10px] sm:text-xs font-black uppercase text-charcoal-muted tracking-widest block mb-2 font-cinzel">
                 Tap to Call Directly (संपर्क सूत्र):
               </span>
-              <div class="space-y-3">
-                <a href="tel:9833276380" class="flex items-center justify-between p-4 rounded-2xl bg-ivory-200/90 hover:bg-regalGold-light/40 border-2 border-regalGold/40 transition">
-                  <span class="text-xl font-black text-charcoal"><i class="fa-solid fa-phone text-emerald-600 mr-2.5"></i> 9833276380</span>
-                  <span class="text-xs font-black uppercase bg-emerald-600 text-white px-3.5 py-1.5 rounded-full">कॉल करें</span>
+              <div class="space-y-2 sm:space-y-3">
+                <a href="tel:9833276380" class="flex items-center justify-between p-3 rounded-xl bg-ivory-200/90 hover:bg-regalGold-light/40 border border-regalGold/40 transition">
+                  <span class="text-base sm:text-lg font-black text-charcoal"><i class="fa-solid fa-phone text-emerald-600 mr-2"></i> 9833276380</span>
+                  <span class="text-[10px] sm:text-xs font-black uppercase bg-emerald-600 text-white px-2.5 py-1 rounded-full">कॉल करें</span>
                 </a>
-                <a href="tel:9699697462" class="flex items-center justify-between p-4 rounded-2xl bg-ivory-200/90 hover:bg-regalGold-light/40 border-2 border-regalGold/40 transition">
-                  <span class="text-xl font-black text-charcoal"><i class="fa-solid fa-phone text-emerald-600 mr-2.5"></i> 9699697462</span>
-                  <span class="text-xs font-black uppercase bg-emerald-600 text-white px-3.5 py-1.5 rounded-full">कॉल करें</span>
+                <a href="tel:9699697462" class="flex items-center justify-between p-3 rounded-xl bg-ivory-200/90 hover:bg-regalGold-light/40 border border-regalGold/40 transition">
+                  <span class="text-base sm:text-lg font-black text-charcoal"><i class="fa-solid fa-phone text-emerald-600 mr-2"></i> 9699697462</span>
+                  <span class="text-[10px] sm:text-xs font-black uppercase bg-emerald-600 text-white px-2.5 py-1 rounded-full">कॉल करें</span>
                 </a>
-                <a href="tel:9653405851" class="flex items-center justify-between p-4 rounded-2xl bg-ivory-200/90 hover:bg-regalGold-light/40 border-2 border-regalGold/40 transition">
-                  <span class="text-xl font-black text-charcoal"><i class="fa-solid fa-phone text-emerald-600 mr-2.5"></i> 9653405851</span>
-                  <span class="text-xs font-black uppercase bg-emerald-600 text-white px-3.5 py-1.5 rounded-full">कॉल करें</span>
+                <a href="tel:9653405851" class="flex items-center justify-between p-3 rounded-xl bg-ivory-200/90 hover:bg-regalGold-light/40 border border-regalGold/40 transition">
+                  <span class="text-base sm:text-lg font-black text-charcoal"><i class="fa-solid fa-phone text-emerald-600 mr-2"></i> 9653405851</span>
+                  <span class="text-[10px] sm:text-xs font-black uppercase bg-emerald-600 text-white px-2.5 py-1 rounded-full">कॉल करें</span>
                 </a>
               </div>
             </div>
           </article>
 
           <!-- ANCESTRAL ORIGIN -->
-          <article class="reveal-on-scroll bg-ivory-200 rounded-3xl p-6 sm:p-8 border-2 border-regalGold shadow-royal hover:shadow-royal-hover transition-all duration-300">
-            <h4 class="font-royalTitle text-2xl sm:text-3xl text-crimson mb-2 flex items-center gap-2">
+          <article class="reveal-on-scroll bg-ivory-200 rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-regalGold shadow-royal">
+            <h4 class="font-royalTitle text-xl sm:text-2xl text-crimson mb-1.5 flex items-center gap-2">
               <i class="fa-solid fa-landmark text-regalGold"></i>
               गाँव का पैतृक पता (Native Roots)
             </h4>
-            <p class="font-serifHindi text-lg sm:text-xl font-bold text-charcoal leading-relaxed">
+            <p class="font-serifHindi text-sm sm:text-lg font-bold text-charcoal leading-relaxed">
               ग्राम: मुनीपुर, पो. कोईरीपुर,<br>
               जि. सुल्तानपुर (उ.प्र.) — पिन: 222 301
             </p>
@@ -1075,48 +1085,48 @@
     </section>
 
     <!-- ================= BAAL MANUHAAR (बाल मनुहार) ================= -->
-    <section id="manuhaar" class="py-20 sm:py-28 bg-crimson text-white border-y-4 border-regalGold">
-      <div class="max-w-5xl mx-auto px-4 text-center">
+    <section id="manuhaar" class="py-12 sm:py-20 md:py-28 bg-crimson text-white border-y-2 sm:border-y-4 border-regalGold w-full px-3 sm:px-6">
+      <div class="max-w-5xl mx-auto text-center">
         
-        <div class="inline-flex items-center gap-2 text-regalGold-light text-sm font-black uppercase tracking-widest font-cinzel mb-2">
+        <div class="inline-flex items-center gap-1.5 text-regalGold-light text-xs font-black uppercase tracking-widest font-cinzel mb-1">
           <span>👶 Sweet Wishes from Little Ones 👶</span>
         </div>
-        <h2 class="text-4xl sm:text-6xl font-royalTitle text-white mb-2">बाल मनुहार</h2>
-        <div class="w-28 h-1 bg-regalGold mx-auto mt-2 mb-12"></div>
+        <h2 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-royalTitle text-white mb-2">बाल मनुहार</h2>
+        <div class="w-20 sm:w-28 h-1 bg-regalGold mx-auto mt-2 mb-8 sm:mb-12"></div>
 
-        <div class="grid md:grid-cols-2 gap-8 sm:gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
           
           <!-- CHACHU CARD -->
-          <div class="reveal-on-scroll bg-crimson-deep/95 rounded-3xl p-8 sm:p-12 border-3 border-regalGold shadow-2xl relative transform hover:-translate-y-2 transition-all duration-300">
-            <div class="w-20 h-20 rounded-full bg-pink-500/20 text-pink-300 border-2 border-pink-400 flex items-center justify-center text-4xl mx-auto mb-6">
+          <div class="reveal-on-scroll bg-crimson-deep/95 rounded-2xl sm:rounded-3xl p-6 sm:p-10 border-2 border-regalGold shadow-2xl relative">
+            <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-pink-500/20 text-pink-300 border border-pink-400 flex items-center justify-center text-2xl sm:text-4xl mx-auto mb-4">
               <i class="fa-solid fa-child-dress"></i>
             </div>
-            <p class="font-serifHindi text-2xl sm:text-3xl font-extrabold text-regalGold-light leading-snug">
+            <p class="font-serifHindi text-xl sm:text-2xl md:text-3xl font-extrabold text-regalGold-light leading-snug">
               "न कोई फोन, न कोई बहाना<br>मेरे चाचू की शादी में<br>जलुल से जलुल आना..."
             </p>
-            <div class="mt-8 pt-5 border-t border-regalGold/30">
-              <p class="font-serifHindi text-2xl sm:text-3xl font-black text-white">— आव्या, नंदिनी</p>
+            <div class="mt-6 pt-4 border-t border-regalGold/30">
+              <p class="font-serifHindi text-lg sm:text-2xl font-black text-white">— आव्या, नंदिनी</p>
             </div>
           </div>
 
           <!-- MAMA CARD -->
-          <div class="reveal-on-scroll bg-crimson-deep/95 rounded-3xl p-8 sm:p-12 border-3 border-regalGold shadow-2xl relative transform hover:-translate-y-2 transition-all duration-300">
-            <div class="w-20 h-20 rounded-full bg-blue-500/20 text-blue-300 border-2 border-blue-400 flex items-center justify-center text-4xl mx-auto mb-6">
+          <div class="reveal-on-scroll bg-crimson-deep/95 rounded-2xl sm:rounded-3xl p-6 sm:p-10 border-2 border-regalGold shadow-2xl relative">
+            <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400 flex items-center justify-center text-2xl sm:text-4xl mx-auto mb-4">
               <i class="fa-solid fa-child"></i>
             </div>
-            <p class="font-serifHindi text-2xl sm:text-3xl font-extrabold text-regalGold-light leading-snug">
+            <p class="font-serifHindi text-xl sm:text-2xl md:text-3xl font-extrabold text-regalGold-light leading-snug">
               "गिफ्ट लाना या न लाना,<br>मेरे मामा की शादी में<br>जलुल से जलुल आना..."
             </p>
-            <div class="mt-8 pt-5 border-t border-regalGold/30">
-              <p class="font-serifHindi text-2xl sm:text-3xl font-black text-white">— प्रिशा, शौर्य</p>
+            <div class="mt-6 pt-4 border-t border-regalGold/30">
+              <p class="font-serifHindi text-lg sm:text-2xl font-black text-white">— प्रिशा, शौर्य</p>
             </div>
           </div>
 
         </div>
 
         <!-- SPECIAL BARAAT DEPARTURE NOTE -->
-        <div class="reveal-on-scroll mt-12 inline-block bg-ivory-50 text-charcoal px-8 py-5 rounded-3xl border-3 border-regalGold shadow-2xl max-w-2xl font-serifHindi font-black text-xl sm:text-2xl">
-          <i class="fa-solid fa-bus text-crimson mr-3 text-2xl"></i>
+        <div class="reveal-on-scroll mt-8 sm:mt-12 inline-block bg-ivory-50 text-charcoal px-5 sm:px-8 py-3.5 sm:py-5 rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-regalGold shadow-2xl max-w-2xl font-serifHindi font-black text-base sm:text-xl md:text-2xl">
+          <i class="fa-solid fa-bus text-crimson mr-2 text-lg sm:text-2xl"></i>
           विशेष नोट: बारात हमारे निवास स्थान मीरा रोड से शाम ५:०० बजे बस द्वारा प्रस्थान करेगी।
         </div>
 
@@ -1124,40 +1134,40 @@
     </section>
 
     <!-- ================= INTERACTIVE RSVP & WHATSAPP ================= -->
-    <section id="rsvp" class="py-20 sm:py-28 px-4 bg-ivory-100">
+    <section id="rsvp" class="py-12 sm:py-20 md:py-28 px-3 sm:px-6 bg-ivory-100 w-full">
       <div class="max-w-3xl mx-auto">
         
-        <div class="text-center mb-12">
-          <span class="text-xs font-black text-regalGold-deep uppercase tracking-widest font-cinzel">Respond &amp; Celebrate</span>
-          <h2 class="text-4xl sm:text-6xl font-royalTitle text-crimson mt-1">उपस्थिति पुष्टि (RSVP)</h2>
-          <p class="text-charcoal font-serifHindi text-xl font-bold mt-2">
+        <div class="text-center mb-8 sm:mb-12">
+          <span class="text-[10px] sm:text-xs font-black text-regalGold-deep uppercase tracking-widest font-cinzel">Respond &amp; Celebrate</span>
+          <h2 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-royalTitle text-crimson mt-1">उपस्थिति पुष्टि (RSVP)</h2>
+          <p class="text-charcoal font-serifHindi text-sm sm:text-lg font-bold mt-2">
             आपकी उपस्थिति हमारे हर्ष को द्विगुणित करेगी। कृपया उपस्थिति दर्ज करें:
           </p>
-          <div class="w-28 h-1.5 bg-crimson mx-auto mt-4 rounded-full"></div>
+          <div class="w-20 sm:w-28 h-1 bg-crimson mx-auto mt-3 rounded-full"></div>
         </div>
 
-        <div class="bg-ivory-50 rounded-3xl p-8 sm:p-14 border-4 border-regalGold shadow-royal reveal-on-scroll">
-          <form id="rsvpForm" onsubmit="submitRSVP(event)" class="space-y-6">
+        <div class="bg-ivory-50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-14 border-2 sm:border-4 border-regalGold shadow-royal reveal-on-scroll">
+          <form id="rsvpForm" onsubmit="submitRSVP(event)" class="space-y-4 sm:space-y-6">
             <div>
-              <label for="guestName" class="block text-sm font-black uppercase text-crimson mb-2 font-cinzel">
+              <label for="guestName" class="block text-xs sm:text-sm font-black uppercase text-crimson mb-1.5 font-cinzel">
                 आपका शुभ नाम (Full Name) *
               </label>
-              <input type="text" id="guestName" required placeholder="उदा. श्री अशोक शर्मा एवं परिवार" class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-stone-300 text-charcoal text-lg font-bold focus:outline-none focus:border-crimson transition shadow-inner">
+              <input type="text" id="guestName" required placeholder="उदा. श्री अशोक शर्मा एवं परिवार" class="w-full px-4 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white border border-stone-300 text-charcoal text-base sm:text-lg font-bold focus:outline-none focus:border-crimson transition shadow-inner">
             </div>
 
-            <div class="grid sm:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
-                <label for="guestPhone" class="block text-sm font-black uppercase text-crimson mb-2 font-cinzel">
+                <label for="guestPhone" class="block text-xs sm:text-sm font-black uppercase text-crimson mb-1.5 font-cinzel">
                   मोबाइल नंबर (Phone Number) *
                 </label>
-                <input type="tel" id="guestPhone" required placeholder="९८७६५४३२१०" class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-stone-300 text-charcoal text-lg font-bold focus:outline-none focus:border-crimson transition shadow-inner">
+                <input type="tel" id="guestPhone" required placeholder="९८७६५४३२१०" class="w-full px-4 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white border border-stone-300 text-charcoal text-base sm:text-lg font-bold focus:outline-none focus:border-crimson transition shadow-inner">
               </div>
 
               <div>
-                <label for="guestCount" class="block text-sm font-black uppercase text-crimson mb-2 font-cinzel">
+                <label for="guestCount" class="block text-xs sm:text-sm font-black uppercase text-crimson mb-1.5 font-cinzel">
                   आने वाले सदस्य (Guest Count) *
                 </label>
-                <select id="guestCount" class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-stone-300 text-charcoal text-lg font-bold focus:outline-none focus:border-crimson transition">
+                <select id="guestCount" class="w-full px-4 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white border border-stone-300 text-charcoal text-base sm:text-lg font-bold focus:outline-none focus:border-crimson transition">
                   <option value="१ व्यक्ति">१ व्यक्ति (1 Member)</option>
                   <option value="२ व्यक्ति" selected>२ व्यक्ति (2 Members)</option>
                   <option value="३ व्यक्ति">३ व्यक्ति (3 Members)</option>
@@ -1168,38 +1178,38 @@
             </div>
 
             <div>
-              <label for="attendance" class="block text-sm font-black uppercase text-crimson mb-2 font-cinzel">
+              <label for="attendance" class="block text-xs sm:text-sm font-black uppercase text-crimson mb-1.5 font-cinzel">
                 उपस्थिति स्थिति (Attendance) *
               </label>
-              <select id="attendance" class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-stone-300 text-charcoal text-lg font-bold focus:outline-none focus:border-crimson transition">
+              <select id="attendance" class="w-full px-4 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white border border-stone-300 text-charcoal text-base sm:text-lg font-bold focus:outline-none focus:border-crimson transition">
                 <option value="हाँ, निश्चित रूप से आ रहे हैं">हाँ, हम निश्चित रूप से आ रहे हैं (Attending)</option>
                 <option value="दुर्भाग्यवश नहीं आ पाऊँगा">दुर्भाग्यवश नहीं आ पाऊँगा, मंगल शुभकामनाएँ</option>
               </select>
             </div>
 
             <div>
-              <label for="guestWishes" class="block text-sm font-black uppercase text-crimson mb-2 font-cinzel">
-                वर-वधू हेतु मंगल आशीष संदेश (Blessing Note)
+              <label for="guestWishes" class="block text-xs sm:text-sm font-black uppercase text-crimson mb-1.5 font-cinzel">
+                वर-वधू हेतु आशीष संदेश (Blessing Note)
               </label>
-              <textarea id="guestWishes" rows="3" placeholder="रोहित और छाया के सुखद एवं मंगलमय दांपत्य जीवन हेतु अपना संदेश लिखें..." class="w-full px-5 py-4 rounded-2xl bg-white border-2 border-stone-300 text-charcoal text-lg font-bold focus:outline-none focus:border-crimson transition shadow-inner"></textarea>
+              <textarea id="guestWishes" rows="2" placeholder="रोहित और छाया हेतु अपना आशीष संदेश लिखें..." class="w-full px-4 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white border border-stone-300 text-charcoal text-base sm:text-lg font-bold focus:outline-none focus:border-crimson transition shadow-inner"></textarea>
             </div>
 
-            <div class="pt-4 flex flex-col sm:flex-row gap-4">
-              <button type="submit" class="flex-1 py-4 px-6 rounded-2xl bg-crimson hover:bg-crimson-light text-regalGold-light font-black text-xl uppercase tracking-wider shadow-lg hover:shadow-royal transition flex items-center justify-center gap-2">
+            <div class="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <button type="submit" class="w-full py-3 sm:py-4 px-6 rounded-xl sm:rounded-2xl bg-crimson hover:bg-crimson-light text-regalGold-light font-black text-base sm:text-xl uppercase tracking-wider shadow transition flex items-center justify-center gap-2">
                 <i class="fa-solid fa-envelope-circle-check text-regalGold"></i>
                 <span>RSVP दर्ज करें</span>
               </button>
-              <button type="button" onclick="sendViaWhatsApp()" class="py-4 px-8 rounded-2xl bg-emerald-700 hover:bg-emerald-600 text-white font-black text-xl uppercase tracking-wider shadow-lg transition flex items-center justify-center gap-2">
-                <i class="fa-brands fa-whatsapp text-2xl"></i>
-                <span>WhatsApp पर भेजें</span>
+              <button type="button" onclick="sendViaWhatsApp()" class="w-full py-3 sm:py-4 px-6 rounded-xl sm:rounded-2xl bg-emerald-700 hover:bg-emerald-600 text-white font-black text-base sm:text-xl uppercase tracking-wider shadow transition flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>WhatsApp RSVP</span>
               </button>
             </div>
           </form>
 
           <!-- In-Page Feedback Box -->
-          <div id="rsvpMessage" class="hidden mt-8 p-6 rounded-2xl bg-emerald-50 border-2 border-emerald-600 text-emerald-950 text-center font-serifHindi text-xl font-bold">
-            <i class="fa-solid fa-circle-check text-emerald-600 text-4xl mb-2 block"></i>
-            धन्यवाद! आपकी उपस्थिति की सूचना दर्ज कर ली गई है। नवयुगल आपके शुभाशीष की प्रतीक्षा में है।
+          <div id="rsvpMessage" class="hidden mt-6 p-4 rounded-xl bg-emerald-50 border-2 border-emerald-600 text-emerald-950 text-center font-serifHindi text-base sm:text-xl font-bold">
+            <i class="fa-solid fa-circle-check text-emerald-600 text-2xl sm:text-4xl mb-1 block"></i>
+            धन्यवाद! आपकी उपस्थिति की सूचना दर्ज कर ली गई है।
           </div>
         </div>
 
@@ -1207,50 +1217,50 @@
     </section>
 
     <!-- ================= DARSHANABHILASHI & SHARMA PARIVAR ================= -->
-    <section class="py-20 sm:py-28 px-4 bg-ivory-200/90 border-t-4 border-regalGold">
+    <section class="py-12 sm:py-20 md:py-28 px-3 sm:px-6 bg-ivory-200/90 border-t-2 sm:border-t-4 border-regalGold w-full">
       <div class="max-w-6xl mx-auto">
         
-        <div class="text-center mb-14">
-          <h3 class="text-3xl sm:text-5xl font-royalTitle text-crimson">॥ दर्शनाभिलाषी एवं विनीत ॥</h3>
-          <div class="w-32 h-1 bg-crimson mx-auto mt-3"></div>
+        <div class="text-center mb-8 sm:mb-14">
+          <h3 class="text-2xl xs:text-3xl sm:text-5xl font-royalTitle text-crimson">॥ दर्शनाभिलाषी एवं विनीत ॥</h3>
+          <div class="w-24 sm:w-32 h-1 bg-crimson mx-auto mt-2"></div>
         </div>
 
-        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           
           <!-- Swagatakankshi -->
-          <div class="p-6 rounded-3xl bg-ivory-50 border-2 border-regalGold text-center shadow-royal">
-            <span class="text-xs font-black uppercase text-regalGold-dark block tracking-widest mb-1 font-cinzel">स्वगताकांक्षी</span>
-            <p class="font-serifHindi text-2xl font-black text-charcoal">राहुल जगदीश शर्मा</p>
+          <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-ivory-50 border border-regalGold text-center shadow-royal">
+            <span class="text-[10px] sm:text-xs font-black uppercase text-regalGold-dark block tracking-widest mb-1 font-cinzel">स्वगताकांक्षी</span>
+            <p class="font-serifHindi text-lg sm:text-2xl font-black text-charcoal">राहुल जगदीश शर्मा</p>
           </div>
 
           <!-- Vineet -->
-          <div class="p-6 rounded-3xl bg-ivory-50 border-2 border-regalGold text-center shadow-royal">
-            <span class="text-xs font-black uppercase text-regalGold-dark block tracking-widest mb-1 font-cinzel">विनीत</span>
-            <p class="font-serifHindi text-xl font-black text-charcoal leading-relaxed">
+          <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-ivory-50 border border-regalGold text-center shadow-royal">
+            <span class="text-[10px] sm:text-xs font-black uppercase text-regalGold-dark block tracking-widest mb-1 font-cinzel">विनीत</span>
+            <p class="font-serifHindi text-base sm:text-xl font-black text-charcoal leading-relaxed">
               राजा राम शर्मा<br>जगदीश शर्मा
             </p>
           </div>
 
           <!-- Uttarapekshi -->
-          <div class="p-6 rounded-3xl bg-ivory-50 border-2 border-regalGold text-center shadow-royal">
-            <span class="text-xs font-black uppercase text-regalGold-dark block tracking-widest mb-1 font-cinzel">उत्तरापेक्षी</span>
-            <p class="font-serifHindi text-lg font-bold text-charcoal leading-relaxed">
+          <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-ivory-50 border border-regalGold text-center shadow-royal">
+            <span class="text-[10px] sm:text-xs font-black uppercase text-regalGold-dark block tracking-widest mb-1 font-cinzel">उत्तरापेक्षी</span>
+            <p class="font-serifHindi text-sm sm:text-lg font-bold text-charcoal leading-relaxed">
               राधे किशुन शर्मा<br>फूलचन्द्र शर्मा<br>प्रदीप शर्मा
             </p>
           </div>
 
           <!-- Darshanabhilashi -->
-          <div class="p-6 rounded-3xl bg-ivory-50 border-2 border-regalGold text-center shadow-royal">
-            <span class="text-xs font-black uppercase text-regalGold-dark block tracking-widest mb-1 font-cinzel">दर्शनाभिलाषी</span>
-            <p class="font-serifHindi text-sm font-bold text-charcoal leading-relaxed">
+          <div class="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-ivory-50 border border-regalGold text-center shadow-royal">
+            <span class="text-[10px] sm:text-xs font-black uppercase text-regalGold-dark block tracking-widest mb-1 font-cinzel">दर्शनाभिलाषी</span>
+            <p class="font-serifHindi text-xs sm:text-sm font-bold text-charcoal leading-relaxed">
               श्री नंदलाल शर्मा, रमेश, राजेन्द्र, महेन्द्र, भरत, दिनेश, संदीप, दिलीप, संजय, संतोष, अखिलेश, सूरज, मंगल, सुमित, लक्की, आर्यन, अंश, अनुज
             </p>
           </div>
 
         </div>
 
-        <div class="mt-14 text-center">
-          <p class="font-royalTitle text-3xl sm:text-5xl text-crimson font-bold">
+        <div class="mt-8 sm:mt-14 text-center">
+          <p class="font-royalTitle text-2xl xs:text-3xl sm:text-5xl text-crimson font-bold">
             🙏 एवं समस्त शर्मा परिवार 🙏
           </p>
         </div>
@@ -1261,24 +1271,24 @@
   </main>
 
   <!-- ================= LUXURY FOOTER ================= -->
-  <footer class="bg-crimson-deep text-regalGold-light py-12 px-4 text-center border-t-4 border-regalGold">
-    <div class="max-w-4xl mx-auto space-y-4">
-      <p class="font-cinzel text-2xl sm:text-3xl font-black tracking-widest">
+  <footer class="bg-crimson-deep text-regalGold-light py-8 sm:py-12 px-3 sm:px-6 text-center border-t-2 sm:border-t-4 border-regalGold mb-14 lg:mb-0">
+    <div class="max-w-4xl mx-auto space-y-3">
+      <p class="font-cinzel text-xl sm:text-3xl font-black tracking-widest">
         ROHIT &amp; CHHAYA
       </p>
-      <p class="font-serifHindi text-lg sm:text-xl text-stone-200 font-bold">
+      <p class="font-serifHindi text-sm sm:text-lg text-stone-200 font-bold">
         बुधवार, २५ नवम्बर २०२६ • मुक्ति कमल हॉल, दहिसर (पश्चिम), मुंबई
       </p>
       
-      <div class="pt-6 border-t border-regalGold/30 flex flex-wrap items-center justify-center gap-6 text-sm sm:text-base font-bold">
+      <div class="pt-4 border-t border-regalGold/30 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-base font-bold">
         <a href="#hero" class="hover:text-white underline transition">शीर्ष पर जाएं (Top)</a>
         <span>•</span>
-        <a href="tel:9833276380" class="hover:text-white underline transition">संपर्क (+91 9833276380)</a>
+        <a href="tel:9833276380" class="hover:text-white underline transition">कॉल (+91 9833276380)</a>
         <span>•</span>
         <a href="#rsvp" class="hover:text-white underline transition">उपस्थिति दर्ज करें</a>
       </div>
 
-      <p class="text-xs text-stone-400 mt-6 pt-4">
+      <p class="text-[10px] sm:text-xs text-stone-400 mt-4 pt-2">
         स्नेहाशीष एवं प्रेम सहित समस्त शर्मा परिवार का डिजिटल निमंत्रण पत्र।
       </p>
     </div>
